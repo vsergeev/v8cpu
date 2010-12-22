@@ -1,0 +1,5 @@
+mov R1, 0xAA
+mov R14, 0x08
+mov R15, 0x00
+mov MEM, R1
+

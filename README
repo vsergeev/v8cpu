@@ -1,0 +1,20 @@
+v8cpu
+Vanya A. Sergeev - vsergeev at gmail
+
+v8cpu is a simple multi-cycle von Neumann architecture 8-bit CPU written in ~440 lines of Verilog. v8cpu was a project for learning purposes I developed with Icarus Verilog and Xilinx ISE WebPACK.
+See http://dev.frozeneskimo.com/code/v8cpu/fib_output.txt
+
+v8cpu_isa.txt 	- v8cpu instruction set
+
+v8cpu.v 	- v8cpu logic
+v8cpu_mem_sim.v - simulation version of v8cpu memory
+v8cpu_tb.v 	- simulation testbench for v8cpu
+Makefile 	- Makefile to compile and simulate v8cpu with Icarus Verilog
+
+fib.dat 	- program for v8cpu to compute Fibonacci numbers
+fib_output.txt 	- simulator output of v8cpu running Fibonacci program 
+
+sim/ 		- output directory for compilation/simulation
+older_tb/ 	- older testbenches
+v8cpuasm/ 	- assembler for v8cpu written in Python
+
