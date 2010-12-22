@@ -2,7 +2,7 @@ v8cpu
 Vanya A. Sergeev - vsergeev at gmail
 
 v8cpu is a simple multi-cycle von Neumann architecture 8-bit CPU written in ~440 lines of Verilog. v8cpu was a project for learning purposes I developed with Icarus Verilog and Xilinx ISE WebPACK.
-See http://dev.frozeneskimo.com/code/v8cpu/fib_output.txt
+See http://dev.frozeneskimo.com/embedded_projects/v8cpu
 
 v8cpu_isa.txt 	- v8cpu instruction set
 
