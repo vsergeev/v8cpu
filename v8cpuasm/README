@@ -9,3 +9,6 @@ gencoe.py	- Generates a Xilinx ISE WebPACK compatible .coe memory
 		  initialization file from a Verilog memory dat file created
 		  by v8cpuasm.
 
+programs/	- Various test programs for v8cpu and the corresponding
+		  generated .dat / .coe files.
+
