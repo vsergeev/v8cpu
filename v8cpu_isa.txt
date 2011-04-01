@@ -7,32 +7,32 @@ Category
 Instruction Encoding	Mnemonic	| Operation
 
 MOVE
-0001 0000 aaaa bbbb	mov Ra, Rb	| Ra = Rb
-0001 0001 aaaa xxxx	mov Ra, MEM 	| Ra = Memory[R14:R15] 
-0001 0010 aaaa xxxx	mov MEM, Ra	| Memory[R14:R15] = Ra
+0001 0000 aaaa bbbb	mov Ra, Rb	| Ra <= Rb
+0001 0001 aaaa xxxx	mov Ra, MEM 	| Ra <= Memory[R14:R15] 
+0001 0010 aaaa xxxx	mov MEM, Ra	| Memory[R14:R15] <= Ra
 
 MOVE IMMEDIATE
-0010 aaaa dddd dddd	mov Ra, d	| Ra = d
+0010 aaaa dddd dddd	mov Ra, d	| Ra <= d
 
 BRANCH (k is two's complement encoded)
-0011 0000 kkkk kkkk	jmp k		| IP = IP + k
-0011 0001 kkkk kkkk	je k		| if (eq) IP = IP + k
-0011 0010 kkkk kkkk	jne k		| if (!eq) IP = IP + k
-0011 0011 kkkk kkkk	jg k		| if (greater) IP = IP + k
-0011 0100 kkkk kkkk	jl k		| if (!greater) IP = IP + k
+0011 0000 kkkk kkkk	jmp k		| IP <= IP + k
+0011 0001 kkkk kkkk	je k		| if (eq) IP <= IP + k
+0011 0010 kkkk kkkk	jne k		| if (!eq) IP <= IP + k
+0011 0011 kkkk kkkk	jg k		| if (greater) IP <= IP + k
+0011 0100 kkkk kkkk	jl k		| if (!greater) IP <= IP + k
 
 JUMP
-0100 xxxx xxxx xxxx	ljmp		| IP = R14:R15 << 1
+0100 xxxx xxxx xxxx	ljmp		| IP <= R14:R15 << 1
 
 MATH
-0101 0000 aaaa bbbb	add Ra, Rb	| Ra = Ra + Rb
-0101 0001 aaaa bbbb	sub Ra, Rb	| Ra = Ra - Rb
-0101 0010 aaaa bbbb	and Ra, Rb	| Ra = Ra & Rb
-0101 0011 aaaa bbbb	or Ra, Rb	| Ra = Ra | Rb
-0101 0100 aaaa bbbb	xor Ra, Rb	| Ra = Ra ^ Rb
-0101 0101 aaaa xxxx	not Ra		| Ra = ~Ra
-0101 0110 aaaa bbbb	cmp Ra, Rb	| eq flag = (Ra == Rb)
-					  greater flag = (Ra > Rb)
+0101 0000 aaaa bbbb	add Ra, Rb	| Ra <= Ra + Rb
+0101 0001 aaaa bbbb	sub Ra, Rb	| Ra <= Ra - Rb
+0101 0010 aaaa bbbb	and Ra, Rb	| Ra <= Ra & Rb
+0101 0011 aaaa bbbb	or Ra, Rb	| Ra <= Ra | Rb
+0101 0100 aaaa bbbb	xor Ra, Rb	| Ra <= Ra ^ Rb
+0101 0101 aaaa xxxx	not Ra		| Ra <= ~Ra
+0101 0110 aaaa bbbb	cmp Ra, Rb	| eq flag <= (Ra == Rb)
+					  greater flag <= (Ra > Rb)
 
 All other opcodes	nop		| Do nothing
 
