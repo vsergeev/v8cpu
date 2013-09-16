@@ -12,7 +12,7 @@ v8cpu_tb.v 	- simulation testbench for v8cpu
 Makefile 	- Makefile to compile and simulate v8cpu with Icarus Verilog
 
 fib.dat 	- program for v8cpu to compute Fibonacci numbers
-fib_output.txt 	- simulator output of v8cpu running Fibonacci program 
+fib_output.txt 	- simulator output of v8cpu running Fibonacci program
 
 sim/ 		- output directory for compilation/simulation
 older_tb/ 	- older testbenches

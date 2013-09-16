@@ -21,7 +21,7 @@ module v8cpu_alu (
 			ALU_OP_XOR	= 4'b0100,
 			ALU_OP_NOT	= 4'b0101,
 			ALU_OP_CMP	= 4'b0110;
-	
+
 	parameter	FLAG_INDEX_EQ		= 'd0,
 			FLAG_INDEX_GREATER	= 'd1;
 
@@ -52,10 +52,10 @@ module v8cpu_mem (
 	input [15:0] address,
 	input [7:0] data,
 	output reg [7:0] q);
-	
+
 	wire [7:0] q_memory;
 	reg we_validated;
-	
+
 	blk_mem_gen memory(.clka(clk), .wea(we_validated), .addra(address[9:0]), .dina(data), .douta(q_memory));
 
 	always @(*) begin
@@ -116,7 +116,7 @@ module v8cpu_cu (
 	input clk,
 	input reset,
 
-	output reg [3:0] alu_op,	
+	output reg [3:0] alu_op,
 	output reg [7:0] alu_a,
 	output reg [7:0] alu_b,
 	input [7:0] alu_c,
@@ -187,8 +187,8 @@ module v8cpu_cu (
 
 	/* Assign the flags input of the ALU directly to the v8CPU_Flags register */
 	assign alu_flags = v8CPU_Flags;
-	
-	/* Combinational block for state machine (spelled out due to Xilinx tools bug with arrays in sensitivity list) */ 
+
+	/* Combinational block for state machine (spelled out due to Xilinx tools bug with arrays in sensitivity list) */
 	always @(state or Instruction or v8CPU_IP or v8CPU_Flags or memQ or calc_n_v8CPU_IP or alu_c or alu_newFlags or v8CPU_RegisterFile[0] or v8CPU_RegisterFile[1] or v8CPU_RegisterFile[2] or v8CPU_RegisterFile[3] or v8CPU_RegisterFile[4] or v8CPU_RegisterFile[5] or v8CPU_RegisterFile[6] or v8CPU_RegisterFile[7] or v8CPU_RegisterFile[8] or v8CPU_RegisterFile[9] or v8CPU_RegisterFile[10] or v8CPU_RegisterFile[11] or v8CPU_RegisterFile[12] or v8CPU_RegisterFile[13] or v8CPU_RegisterFile[14] or v8CPU_RegisterFile[15]) begin
 		nextState = STATE_FETCH_INSTR_LO;
 
@@ -205,7 +205,7 @@ module v8cpu_cu (
 
 		n_Register_Index = 0;
 		n_Register_Data = v8CPU_RegisterFile[0];
-		
+
 		alu_op = Instruction[11:8];
 		alu_a = v8CPU_RegisterFile[Instruction[7:4]];
 		alu_b = v8CPU_RegisterFile[Instruction[3:0]];
@@ -298,13 +298,13 @@ module v8cpu_cu (
 				n_memAddress = n_v8CPU_IP;
 				nextState = STATE_FETCH_INSTR_LO;
 			end
-			
+
 			STATE_CLASS_MOVE_IMM: begin
 				n_Register_Index = Instruction[11:8];
-				n_Register_Data = Instruction[7:0];				
+				n_Register_Data = Instruction[7:0];
 				setupFetch;
 			end
-			
+
 			STATE_CLASS_MATH: begin
 				alu_op = Instruction[11:8];
 				alu_a = v8CPU_RegisterFile[Instruction[7:4]];
@@ -351,7 +351,7 @@ module v8cpu_cu (
 		endcase
 	end
 
-	/* A task to increment the IP and setup the memory address to fetch the next instruction */	
+	/* A task to increment the IP and setup the memory address to fetch the next instruction */
 	task setupFetch;
 	begin
 		n_v8CPU_IP = v8CPU_IP+2;
@@ -414,7 +414,7 @@ module v8cpu (
 	output [7:0] portB,
 	input [7:0] pinC,
 	input [7:0] pinD);
-	
+
 	wire [3:0] alu_op;
 	wire [7:0] alu_a;
 	wire [7:0] alu_b;

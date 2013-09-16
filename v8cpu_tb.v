@@ -8,7 +8,7 @@ module v8cpu_tb(
 
 	reg clk;
 	reg rst;
-	
+
 	initial begin
 		$dumpvars;
 

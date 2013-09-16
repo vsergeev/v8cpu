@@ -8,7 +8,7 @@ Instruction Encoding	Mnemonic	| Operation
 
 MOVE
 0001 0000 aaaa bbbb	mov Ra, Rb	| Ra <= Rb
-0001 0001 aaaa xxxx	mov Ra, MEM 	| Ra <= Memory[R14:R15] 
+0001 0001 aaaa xxxx	mov Ra, MEM 	| Ra <= Memory[R14:R15]
 0001 0010 aaaa xxxx	mov MEM, Ra	| Memory[R14:R15] <= Ra
 
 MOVE IMMEDIATE
