@@ -1,3 +1,5 @@
+#!/usr/bin/env python
+
 # v8cpuasm - Two-pass assembler for v8cpu
 # Vanya A. Sergeev - vsergeev@gmail.com
 # Generates a memory file that can be loaded by Verilog simulator's $readmemh()
@@ -80,7 +82,7 @@ fileASM = open(sys.argv[1], 'r')
 fileOut = open(sys.argv[2], 'w')
 
 # Instruction and max number of operands
-validInstructions = {"mov":2, "jmp":1, "je":1, "jne":1, "jg":1, "jl":1, "ljmp":0, "add":2, "sub":2, "and":2, "or":2, "xor":2, "not":2, "cmp":2, "nop":0}
+validInstructions = {"mov":2, "jmp":1, "je":1, "jne":1, "jg":1, "jl":1, "ljmp":0, "add":2, "sub":2, "and":2, "or":2, "xor":2, "not":2, "cmp":2, "hlt":0, "nop":0}
 IP = 0
 addressLabelDict = {}
 
@@ -265,6 +267,10 @@ for line in fileASM:
 			print("Line: %s" % line)
 			exit(-1)
 
+	elif (asmMnemonic == "hlt"):
+		# virtual instruction hlt (halt) equates to jmp 0
+		fileOut.write("00 30")
+		
 	elif (asmMnemonic == "nop"):
 		fileOut.write("00 00")
 
